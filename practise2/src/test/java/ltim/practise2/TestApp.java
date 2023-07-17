@@ -38,7 +38,6 @@ public class TestApp extends BaseTest {
 	@Test(priority = 2)
 	public void listOfIhones() throws InterruptedException {
 		ArrayList list = null;
-		
 		ListOfIphones l = new ListOfIphones(driver);
 		try {
 			list = l.giveListAndSelect("Apple iPhone 14 (128 GB) - Starlight", action);

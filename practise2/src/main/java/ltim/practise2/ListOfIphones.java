@@ -14,10 +14,10 @@ public class ListOfIphones {
 
 	@FindBy(xpath = "//span[contains(text(), 'Apple iPhone 14')]")
 	private List<WebElement> list;
-	
-	@FindBy(id="productTitle")
+
+	@FindBy(id = "productTitle")
 	private WebElement productTitle;
-	
+
 	public static WebDriver driver;
 
 	public ListOfIphones(WebDriver driver) {
@@ -38,28 +38,33 @@ public class ListOfIphones {
 
 				}
 			}
-			
 
 		}
 		System.out.println(lists.size());
 		Thread.sleep(5000);
 		return lists;
 	}
-	
+
+	/*
+	 * public String verifyTitle() { Set<String> set = driver.getWindowHandles();
+	 * String parent = driver.getWindowHandle(); for (String a : set) { if
+	 * (!parent.equalsIgnoreCase(a)) { driver.switchTo().window(a); }
+	 * 
+	 * } String s = productTitle.getText();
+	 * 
+	 * return s; }
+	 */
 	public String verifyTitle() {
 		Set<String> set = driver.getWindowHandles();
-		String parent=driver.getWindowHandle();
-		for(String a : set) {
-			if(!parent.equalsIgnoreCase(a)) {
+		String parent = driver.getWindowHandle();
+		for (String a : set) {
+			if (!parent.equalsIgnoreCase(a)) {
 				driver.switchTo().window(a);
-				/*
-				 * System.out.println(a); System.out.println(driver.getTitle());
-				 */
 			}
-				
+
 		}
 		String s = productTitle.getText();
-		
+
 		return s;
 	}
 
