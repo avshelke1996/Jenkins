@@ -22,14 +22,17 @@ public class ExcelReader {
 
 	}
 
+	//get last row number
 	public int getRowCount(int sheetindex) {
 		return workbook.getSheetAt(sheetindex).getLastRowNum() + 1;
 	}
 
+	//get last column
 	public int getColumnCount(int sheetindex) {
 		return workbook.getSheetAt(sheetindex).getRow(0).getLastCellNum();
 	}
 
+	//read cell
 	public Object getSpecificCellValue(int sheetindex, int row, int cells) {
 		XSSFCell cell = workbook.getSheetAt(sheetindex).getRow(row).getCell(cells);
 
@@ -51,6 +54,7 @@ public class ExcelReader {
 		return null;
 	}
 
+	//get two dimenssional data 
 	public Object[][] getTestData(int sheetindex) {
 		int rows = getRowCount(sheetindex);
 		int cells = getColumnCount(sheetindex);
