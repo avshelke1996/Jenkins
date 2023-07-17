@@ -45,15 +45,6 @@ public class ListOfIphones {
 		return lists;
 	}
 
-	/*
-	 * public String verifyTitle() { Set<String> set = driver.getWindowHandles();
-	 * String parent = driver.getWindowHandle(); for (String a : set) { if
-	 * (!parent.equalsIgnoreCase(a)) { driver.switchTo().window(a); }
-	 * 
-	 * } String s = productTitle.getText();
-	 * 
-	 * return s; }
-	 */
 	public String verifyTitle() {
 		Set<String> set = driver.getWindowHandles();
 		String parent = driver.getWindowHandle();
