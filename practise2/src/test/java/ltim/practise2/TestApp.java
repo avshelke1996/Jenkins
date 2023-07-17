@@ -1,12 +1,13 @@
 package ltim.practise2;
 
 import java.util.ArrayList;
+import java.util.Set;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import utility.HandleWindow;
 import utility.ScrollBy;
 
 @Listeners(utility.ListenOnTestResult.class)
@@ -50,6 +51,9 @@ public class TestApp extends BaseTest {
 			sa.assertEquals("Apple iPhone 14 (128 GB) - Starlight", productName);
 			sa.assertAll();
 		}
+		
+//		Set<String> allwindow = driver.getWindowHandles();
+//		ArrayList<String> arr = HandleWindow.handleWindow(allwindow);
 		
 	}
 	
