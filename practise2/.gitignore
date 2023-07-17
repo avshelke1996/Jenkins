@@ -1,4 +1,4 @@
 /.metadata/
-/target/
-/Screenshot/
-/test-output/
+target/
+Screenshot/
+test-output/
