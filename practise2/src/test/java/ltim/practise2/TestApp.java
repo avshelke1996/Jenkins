@@ -1,13 +1,9 @@
 package ltim.practise2;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import utility.HandleWindow;
 import utility.ScrollBy;
 
 @Listeners(utility.ListenOnTestResult.class)
@@ -36,28 +32,45 @@ public class TestApp extends BaseTest {
 		sa.assertAll();
 	}
 
+//	@Test(priority = 2)
+//	public void listOfIhones() throws InterruptedException {
+//		ArrayList list = null;
+//		ListOfIphones l = new ListOfIphones(driver);
+//		try {
+//			list = l.giveListAndSelect("Apple iPhone 14 (128 GB) - Midnight", action);
+//		}catch(Exception e) {
+//			System.out.println("error - "+e.getMessage());
+//		}finally {
+//			String title = driver.getTitle();
+//			Thread.sleep(5000);
+//			String productName = l.verifyTitle();
+//			sa.assertEquals("Apple iPhone 14 (128 GB) - Midnight", productName);
+//			sa.assertAll();
+//		}
+//		
+////		Set<String> allwindow = driver.getWindowHandles();
+////		ArrayList<String> arr = HandleWindow.handleWindow(allwindow);
+//		
+//	}
+	
 	@Test(priority = 2)
-	public void listOfIhones() throws InterruptedException {
-		ArrayList list = null;
-		ListOfIphones l = new ListOfIphones(driver);
-		try {
-			list = l.giveListAndSelect("Apple iPhone 14 (128 GB) - Starlight", action);
-		}catch(Exception e) {
-			System.out.println("error - "+e.getMessage());
-		}finally {
-			String title = driver.getTitle();
-			Thread.sleep(5000);
-			String productName = l.verifyTitle();
-			sa.assertEquals("Apple iPhone 14 (128 GB) - Starlight", productName);
-			sa.assertAll();
-		}
-		
-//		Set<String> allwindow = driver.getWindowHandles();
-//		ArrayList<String> arr = HandleWindow.handleWindow(allwindow);
-		
+	public void selectPhone() throws InterruptedException {
+		ListOfIphones phones= new ListOfIphones(driver);
+		phones.selectFirstPhone();
+		Thread.sleep(3000);
 	}
 	
-	@Test(priority=3)
+	@Test(priority = 3)
+	public void titleVerify() throws InterruptedException {
+		ListOfIphones phones= new ListOfIphones(driver);
+		String s = phones.verifyTitle();
+		sa.assertEquals("Apple iPhone 14 (128 GB) - Midnight", s);
+		Thread.sleep(3000);
+	}
+	
+	
+	
+	@Test(priority=4)
 	public void isInStock() {
 		PhoneDetails d = new PhoneDetails(driver);
 		ScrollBy.scrollByAxix(driver, 0, 500);

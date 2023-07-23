@@ -17,6 +17,9 @@ public class ListOfIphones {
 
 	@FindBy(id = "productTitle")
 	private WebElement productTitle;
+	
+	@FindBy(xpath="(//span[@class='a-size-medium a-color-base a-text-normal'])[1]")
+	private WebElement selectPhone;
 
 	public static WebDriver driver;
 
@@ -25,30 +28,35 @@ public class ListOfIphones {
 		PageFactory.initElements(driver, this);
 	}
 
-	public ArrayList giveListAndSelect(String modelName, Actions action) throws InterruptedException {
-		ArrayList<String> lists = new ArrayList<>();
-		if (list.size() > 0) {
-			for (int i = 0; i < list.size(); i++) {
-				lists.add(list.get(i).getText());
-				action.moveToElement(list.get(i)).perform();
-				if (list.get(i).getText().equalsIgnoreCase(modelName)) {
-					list.get(i).click();
-					System.out.println(lists.size());
-					return lists;
-
-				}
-			}
-
-		}
-		System.out.println(lists.size());
-		Thread.sleep(5000);
-		return lists;
+//	public ArrayList giveListAndSelect(String modelName, Actions action) throws InterruptedException {
+//		ArrayList<String> lists = new ArrayList<>();
+//		if (list.size() > 0) {
+//			for (int i = 0; i < list.size(); i++) {
+//				lists.add(list.get(i).getText());
+//				action.moveToElement(list.get(i)).perform();
+//				if (list.get(i).getText().equalsIgnoreCase(modelName)) {
+//					list.get(i).click();
+//					System.out.println(lists.size());
+//					return lists;
+//
+//				}
+//			}
+//
+//		}
+//		System.out.println(lists.size());
+//		Thread.sleep(5000);
+//		return lists;
+//	}
+	
+	public void selectFirstPhone() {
+		selectPhone.click();
 	}
 
 	public String verifyTitle() {
 		Set<String> set = driver.getWindowHandles();
 		String parent = driver.getWindowHandle();
 		for (String a : set) {
+			System.out.println(a);
 			if (!parent.equalsIgnoreCase(a)) {
 				driver.switchTo().window(a);
 			}
